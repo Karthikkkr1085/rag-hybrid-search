@@ -10,38 +10,54 @@ class Reranker:
     """
     CrossEncoder reranker.
     Re-ranks retrieved documents based on query relevance.
+
+    The CrossEncoder model is lazy-loaded so that FastAPI
+    does not load the model during application startup.
     """
 
     def __init__(self, model_name="BAAI/bge-reranker-base"):
-        self.model = CrossEncoder(model_name)
+        self.model_name = model_name
+        self.model = None
         self.deduplicator = ContextDeduplicator()
+
+    def _get_model(self):
+        """
+        Load the CrossEncoder only when reranking is actually required.
+        """
+
+        if self.model is None:
+            print(f"Loading CrossEncoder model: {self.model_name}")
+
+            self.model = CrossEncoder(
+                self.model_name,
+                device="cpu",
+            )
+
+            print("CrossEncoder model loaded.")
+
+        return self.model
 
     def rerank(self, query: str, results: list, top_k: int = 8):
         """
         Rerank retrieved documents.
-
-        Args:
-            query: User query
-            results: Hybrid search results
-            top_k: Number of documents to return
-
-        Returns:
-            list: Top reranked documents
         """
 
         if not results:
             return []
 
+        model = self._get_model()
+
         pairs = [(query, result["document"]) for result in results]
 
-        scores = self.model.predict(pairs)
+        scores = model.predict(pairs)
+
         print("Raw CrossEncoder scores:", scores)
+
         for result, score in zip(results, scores):
-            # Convert CrossEncoder logit to probability (0-1)
             normalized_score = 1.0 / (1.0 + math.exp(-float(score)))
             result["rerank_score"] = normalized_score
             print("Normalized score:", normalized_score)
-
+            
         reranked = sorted(results, key=lambda x: x["rerank_score"], reverse=True)
 
         print("\n========== CROSS ENCODER SCORES ==========\n")
