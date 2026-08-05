@@ -5,6 +5,8 @@ langchain-openai
 chromadb
 
 openai
+groq
+google-generativeai
 
 fastapi
 python-multipart
@@ -18,6 +20,8 @@ pymupdf
 rank-bm25
 
 sentence-transformers
+transformers
+torch
 
 python-dotenv
 
@@ -26,5 +30,4 @@ pydantic
 tqdm
 
 pandas
-
 numpy
