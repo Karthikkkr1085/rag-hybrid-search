@@ -1,0 +1,117 @@
+.provider-panel,
+.settings-panel {
+  margin: 14px 8px;
+  border: 1px solid rgba(167, 196, 255, 0.28);
+  border-radius: 12px;
+  background: rgba(9, 19, 48, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.settings-panel summary {
+  min-height: 44px;
+  padding: 12px 14px;
+  color: #f1f5f9;
+}
+
+.settings-grid {
+  gap: 12px;
+  padding: 2px 14px 16px;
+}
+
+.settings-grid label {
+  color: #cbd5e1 !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.settings-grid input:not([type="checkbox"]),
+.settings-grid select {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid rgba(181, 209, 255, 0.38);
+  border-radius: 8px;
+  outline: none;
+  background-color: #0b1638;
+  color: #f8fafc !important;
+  padding: 8px 10px;
+  font: 500 0.78rem Manrope, Inter, sans-serif;
+}
+
+.settings-grid select {
+  appearance: auto;
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.settings-grid select option,
+.settings-grid select optgroup {
+  background: #0b1638;
+  color: #f8fafc;
+}
+
+.settings-grid input:not([type="checkbox"]):hover,
+.settings-grid select:hover,
+.settings-grid .toggle:hover {
+  border-color: #91b7ff;
+  background-color: #101f4b;
+}
+
+.settings-grid input:not([type="checkbox"]):focus,
+.settings-grid select:focus,
+.settings-grid .toggle:focus-within {
+  border-color: #a9c7ff;
+  box-shadow: 0 0 0 3px rgba(126, 169, 255, 0.28);
+}
+
+.settings-grid .toggle {
+  min-height: 38px;
+  border-color: rgba(181, 209, 255, 0.28);
+  background: #0b1638;
+  color: #e2e8f0 !important;
+}
+
+.settings-grid input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: #8eb6ff;
+}
+
+.provider-key {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.provider-key input { grid-column: 1; }
+.provider-key button { grid-column: 2; grid-row: 2; }
+
+.provider-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.provider-actions button,
+.provider-key button {
+  min-height: 38px;
+  border: 1px solid rgba(181, 209, 255, 0.35);
+  border-radius: 8px;
+  background: #16295b;
+  color: #f8fafc;
+  padding: 8px 11px;
+  font: 700 0.72rem Manrope, Inter, sans-serif;
+  cursor: pointer;
+}
+
+.provider-actions button:hover,
+.provider-key button:hover { background: #24427f; border-color: #a9c7ff; }
+.provider-actions button:focus-visible,
+.provider-key button:focus-visible { outline: 3px solid rgba(169, 199, 255, 0.45); outline-offset: 2px; }
+.provider-actions button:disabled { opacity: 0.6; cursor: wait; }
+.provider-status { grid-column: 1 / -1; margin: 0; color: #dbeafe; font-size: 0.72rem; line-height: 1.45; }
+
+@media (max-width: 560px) {
+  .settings-grid { grid-template-columns: 1fr; }
+  .provider-key { grid-template-columns: minmax(0, 1fr) auto; }
+  .provider-actions button { flex: 1 1 100%; }
+}

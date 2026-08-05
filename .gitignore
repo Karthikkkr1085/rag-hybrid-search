@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment Variables
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Python Build
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Hugging Face
+.cache/
+huggingface/
+hf_home/
+
+# ChromaDB
+chroma/
+chromadb/
+*.sqlite3
+*.db
+
+# Vector Store
+vector_store/
+persist/
+
+# Generated Embeddings / Indexes
+data/index/
+data/vector_store/
+data/embeddings/
+
+# Model Files
+models/
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+# Uploaded Documents (optional)
+docs/uploads/
+
+# Node
+node_modules/
+dist/
+coverage/
+
+# React
+frontend/node_modules/
+frontend/dist/
+
+# Temporary
+temp/
+tmp/
+*.tmp
+
+# Runtime Files
+*.pid
+*.lock
